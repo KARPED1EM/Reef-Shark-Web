@@ -5,13 +5,15 @@
 
     var savePoint = "";
     
+    var title = document.getElementById('title');
+    var originalTitle = title.innerHTML;
     var byline = document.querySelector('.byline');
-    byline.innerHTML = "by KARPED1EM";
+    var originalByLine = byline.innerHTML;
 
     var storyContainer = document.querySelector('#story');
     var outerScrollContainer = document.querySelector('.outerContainer');
 
-    // page features setup
+    // Page features setup
     var hasSave = loadSavePoint();
     setupButtons(hasSave);
 
@@ -47,8 +49,21 @@
                 // customised to be used for other things too.
                 var splitTag = splitPropertyTag(tag);
 
+                // TITLE: content
+                if( splitTag && splitTag.property == "TITLE" ) {
+                    setVisible(".header", true);
+                    setVisible(".byline", false)
+                    title.innerHTML = splitTag.val;
+                }
+
+                // BYLINE: content
+                else if( splitTag && splitTag.property == "BYLINE" ) {
+                    setVisible(".byline", true);
+                    byline.innerHTML = splitTag.val;
+                }
+
                 // AUDIO: src
-                if( splitTag && splitTag.property == "AUDIO" ) {
+                else if( splitTag && splitTag.property == "AUDIO" ) {
                   if('audio' in this) {
                     this.audio.pause();
                     this.audio.removeAttribute('src');
@@ -90,11 +105,6 @@
                     window.open(splitTag.val);
                 }
 
-                // BACKGROUND: src
-                else if( splitTag && splitTag.property == "BACKGROUND" ) {
-                    outerScrollContainer.style.backgroundImage = 'url('+splitTag.val+')';
-                }
-
                 // CLASS: className
                 else if( splitTag && splitTag.property == "CLASS" ) {
                     customClasses.push(splitTag.val);
@@ -108,6 +118,9 @@
 
                     // Comment out this line if you want to leave the header visible when clearing
                     setVisible(".header", false);
+                    setVisible(".byline", false);
+
+                    previousBottomEdge = 0;
 
                     if( tag == "RESTART" ) {
                         restart();
@@ -177,7 +190,10 @@
     function restart() {
         story.ResetState();
 
+        title.innerHTML = originalTitle;
+        byline.innerHTML = originalByLine
         setVisible(".header", true);
+        setVisible(".byline", true)
 
         // set save point to here
         savePoint = story.state.toJson();
@@ -278,6 +294,8 @@
             let savedState = window.localStorage.getItem('save-state');
             if (savedState) {
                 story.state.LoadJson(savedState);
+                setVisible(".header", false);
+                setVisible(".byline", false);
                 return true;
             }
         } catch (e) {
@@ -302,7 +320,6 @@
             try {
                 window.localStorage.setItem('save-state', savePoint);
                 document.getElementById("reload").removeAttribute("disabled");
-                window.localStorage.setItem('theme', document.body.classList.contains("dark") ? "dark" : "");
             } catch (e) {
                 console.warn("Couldn't save state");
             }
@@ -322,16 +339,12 @@
             try {
                 let savedState = window.localStorage.getItem('save-state');
                 if (savedState) story.state.LoadJson(savedState);
+                setVisible(".header", false);
+                setVisible(".byline", false);
             } catch (e) {
                 console.debug("Couldn't load save state");
             }
             continueStory(true);
-        });
-
-        let themeSwitchEl = document.getElementById("theme-switch");
-        if (themeSwitchEl) themeSwitchEl.addEventListener("click", function(event) {
-            document.body.classList.add("switched");
-            document.body.classList.toggle("dark");
         });
     }
 
