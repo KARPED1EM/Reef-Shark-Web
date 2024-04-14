@@ -320,6 +320,7 @@
             try {
                 window.localStorage.setItem('save-state', savePoint);
                 document.getElementById("reload").removeAttribute("disabled");
+                window.alert("保存成功");
             } catch (e) {
                 console.warn("Couldn't save state");
             }
@@ -338,9 +339,11 @@
             removeAll("img");
             try {
                 let savedState = window.localStorage.getItem('save-state');
-                if (savedState) story.state.LoadJson(savedState);
-                setVisible(".header", false);
-                setVisible(".byline", false);
+                if (savedState) {
+                    story.state.LoadJson(savedState);
+                    setVisible(".header", false);
+                    setVisible(".byline", false);
+                }
             } catch (e) {
                 console.debug("Couldn't load save state");
             }
