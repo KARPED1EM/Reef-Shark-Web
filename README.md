@@ -4,7 +4,13 @@
 
 但是如果你对小时候玩的那种文字游戏很感兴趣的话，我来安利下这个软件。你可以写一篇根据读者的选择来累计数值&选择剧情走向的小说，真的超带感！
 
+## 统计
+- 剧情段落（Knots）：7
+- 剧情选项（Choices）：206
+- 剧情跳转（Diverts）：70
+
 ## 章节
 
 - [x] Pre_TalkToQueen
-- [ ] Xiao_PrisonBreak
+- [x] Xiao_PrisonBreak
+- [ ] Xiao_MeetingReturnParty
