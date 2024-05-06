@@ -6,11 +6,11 @@
 
 ## 统计
 - 剧情节点（Knots）：7
-- 剧情选项（Choices）：213
-- 剧情跳转（Diverts）：73
+- 剧情选项（Choices）：208
+- 剧情跳转（Diverts）：67
 
 ## 章节
 
-- [x] Pre_TalkToQueen
-- [x] Xiao_PrisonBreak
-- [ ] Xiao_MeetingReturnParty
+- [x] TalkToQueen
+- [x] PrisonBreak
+- [ ] MeetingReturnParty
