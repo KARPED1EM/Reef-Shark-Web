@@ -30,6 +30,34 @@ h2 {
     color: #BBB;
 }
 
+.speaker-wrapper {      
+    position: absolute;
+    margin-left: -516px;
+    margin-top: -29px;
+    width: 500px;
+}
+
+h5 {
+    text-align: right;
+    color: #BBB;
+    font-size: 13pt;
+    line-height: 1.7em;
+}
+
+@media screen and (max-width: 980px) {
+    .speaker-wrapper {
+        display: none;
+        /* position: relative;
+        margin-left: -180px;
+        margin-bottom: -25px;
+        margin-top: 25px; */
+    }
+    /* h5 {
+        text-align: right;
+        font-size: 10pt;
+    } */
+}
+
 .header {
     padding-top: 3em;
     padding-bottom: 3em;
@@ -77,7 +105,7 @@ h2 {
     top: 0;
     left: 0;
     margin-top: 24px;
-    background: url(./earth.webp);
+    background: url(/bg.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-color: black;
@@ -169,6 +197,15 @@ img {
 */
 .choice a {
     font-size: 15pt;
+}
+
+@media screen and (max-width: 980px) {
+    .choice a {
+        font-size: 11pt;
+    }
+    .choice p {
+        margin-top: -10px;
+    }
 }
 
 /* 

@@ -62,6 +62,20 @@
                     byline.innerHTML = splitTag.val;
                 }
 
+                // SPEAKER: name
+                else if( splitTag && splitTag.property == "SPEAKER") {
+                    var speakerwrapperElement = document.createElement('div');
+                    speakerwrapperElement.className = "speaker-wrapper";
+
+                    var speakerElement = document.createElement('h5');
+                    speakerElement.innerHTML = splitTag.val;
+                    
+                    speakerwrapperElement.appendChild(speakerElement);
+                    storyContainer.appendChild(speakerwrapperElement);
+
+                    showAfter(delay, speakerwrapperElement);
+                }
+
                 // AUDIO: src
                 else if( splitTag && splitTag.property == "AUDIO" ) {
                   if('audio' in this) {
@@ -115,6 +129,7 @@
                 else if( tag == "CLEAR" || tag == "RESTART" ) {
                     removeAll("p");
                     removeAll("img");
+                    removeAll("div", "speaker-wrapper");
 
                     // Comment out this line if you want to leave the header visible when clearing
                     setVisible(".header", false);
@@ -217,6 +232,12 @@
     // see previously, so it doesn't go too far.
     function scrollDown(previousBottomEdge) {
 
+        // Scroll to top and return immediately to prevent endless scrolling
+        if ( previousBottomEdge == 0) {
+            outerScrollContainer.scrollTo(0, 0);
+            return;
+        }
+
         // Line up top of screen with the bottom of where the previous content ended
         var target = previousBottomEdge;
 
@@ -248,11 +269,12 @@
 
     // Remove all elements that match the given selector. Used for removing choices after
     // you've picked one, as well as for the CLEAR and RESTART tags.
-    function removeAll(selector)
+    function removeAll(selector, selectedClass)
     {
         var allElements = storyContainer.querySelectorAll(selector);
         for(var i=0; i<allElements.length; i++) {
             var el = allElements[i];
+            if (selectedClass != null && el.className != selectedClass) continue;
             el.parentNode.removeChild(el);
         }
     }
@@ -311,6 +333,7 @@
         if (rewindEl) rewindEl.addEventListener("click", function(event) {
             removeAll("p");
             removeAll("img");
+            removeAll("div", "speaker-wrapper");
             setVisible(".header", false);
             restart();
         });
@@ -337,6 +360,7 @@
 
             removeAll("p");
             removeAll("img");
+            removeAll("div", "speaker-wrapper");
             try {
                 let savedState = window.localStorage.getItem('save-state');
                 if (savedState) {
