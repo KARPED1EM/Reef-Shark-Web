@@ -6,11 +6,10 @@
 
 ## 统计
 - 剧情节点（Knots）：7
-- 剧情选项（Choices）：208
-- 剧情跳转（Diverts）：67
+- 剧情选项（Choices）：272
+- 剧情跳转（Diverts）：89
 
 ## 章节
 
-- [x] TalkToQueen
-- [x] PrisonBreak
-- [ ] MeetingReturnParty
+- [ ] NewFish
+- [ ] PrisonBreak
