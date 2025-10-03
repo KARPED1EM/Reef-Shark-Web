@@ -1,15 +1,15 @@
-# 礁鲨号
+# Reef Shark
 
-一本基于 [Ink](https://www.inklestudios.com/ink) 编写的分支剧情小说，本库为其生成的网站。仅用于学习测试，没有文笔没有开源，你感兴趣的话倒也可以读读看。
+A branching narrative novel written in [Ink](https://www.inklestudios.com/ink), this repository hosts its generated website. For learning and testing purposes only. Feel free to read it if you're interested.
 
-如果你对分支剧情小说很感兴趣的话，我来安利下这个软件。你可以用它写一篇根据读者的选择来累计数值&选择剧情走向的小说，真的超带感！而 [Ink](https://www.inklestudios.com/ink) 相对于其它选择向小说编辑器的优势在于，它并不是常见的按照树形分支为框架来创作故事，而是通过不同段落之间的跳转来完成一个拥有无限可能性的故事。
+If you're interested in branching narrative novels, let me recommend this software. You can use it to write a novel that accumulates values and determines plot direction based on reader choices - it's really exciting! The advantage of [Ink](https://www.inklestudios.com/ink) over other choice-based narrative editors is that it doesn't follow the typical tree-branch framework for storytelling, but instead uses transitions between different passages to create a story with infinite possibilities.
 
-## 统计
-- 剧情节点（Knots）：7
-- 剧情选项（Choices）：272
-- 剧情跳转（Diverts）：89
+## Statistics
+- Story Knots: 7
+- Choices: 272
+- Diverts: 89
 
-## 章节
+## Chapters
 
 - [ ] NewFish
 - [ ] PrisonBreak
