@@ -343,7 +343,7 @@
             try {
                 window.localStorage.setItem('save-state', savePoint);
                 document.getElementById("reload").removeAttribute("disabled");
-                window.alert("保存成功");
+                window.alert("Save successful");
             } catch (e) {
                 console.warn("Couldn't save state");
             }
